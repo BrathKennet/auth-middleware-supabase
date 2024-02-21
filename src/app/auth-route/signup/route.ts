@@ -1,6 +1,4 @@
 import { supabase } from "@/config";
-import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -10,6 +8,9 @@ export async function POST(req: NextRequest) {
   const formData = await req.formData();
   const email = String(formData.get('email'));
   const password = String(formData.get('password'));
+
+  /* With Supabase ssr */
+  /* const supabase = await supabaseServer(); */
 
   await supabase.auth.signUp({
     email, password,
