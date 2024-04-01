@@ -1,4 +1,4 @@
-import { getUser } from "@/services/auth";
+import { getUser } from "@/services/auth/server";
 
 export default async function Data() {
   const user = await getUser();
